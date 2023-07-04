@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Voting Status</h1>
+
+    <label for="date">date of birth</label><br>
+    <input type="date" name="DOB" id="date">
+
+    <button>vote</button>
+
+    <p></p>
+
+    <script>
+        const input = document.querySelector('input')
+        const btn = document.querySelector('button')
+        const para = document.querySelector('p')
+
+        function votestat(){
+            para.textContent = (new Date().getFullYear()) - (input.value).slice(0, 4)
+            para.textContent = age > 18 ? 'old enough to vote' : 'Too young to vote'
+        }
+
+        btn.addEventListener('click', votestat)
+    </script>
+</body>
+</html>

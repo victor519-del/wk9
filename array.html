@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRAYS</title>
+</head>
+<body>
+    <p></p>
+    <p></p>
+    <script>
+
+        const para = document.querySelector('p:first-of-type')
+        const para2 = document.querySelector('p:last-of-type')
+
+
+        let names = 'tayo victor adetutu tife joshua'
+        let arr = [1,2,3,4,5,6,7,8]
+        // let index = arr[2]
+
+       
+
+        names = names.split(' ')
+        names.push('dami, precious')
+
+        names.unshift('kola')
+
+        names.splice(3,0, 'darasimi, franc')
+
+        names.splice(4,1,'nero')
+        oldNames = names.splice()
+        oldNames.pop()
+        names.shift()
+        let pastStud = ['sharon', 'thariwat', 'Ben', 'Stephen']
+
+        names.push(...pastStud)
+
+        para.textContent = 'old Names: ' + arr.map(x => x + 10)
+        para2.innerText = 'Current names: ' + names.map(name => name.replace(name[0], name[0].toUppercase()))
+
+        para2.textContent = names.filter(name => name.includes('s'))
+
+    </script>
+
+    
+    
+</body>
+</html>

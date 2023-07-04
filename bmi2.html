@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: blue;
+            color: wheat;
+        }
+        main{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>body mass index (bmi)</h1>
+    <main>
+
+        <section>
+            <label for="weight">weight: </label>
+            <input type="number" name="weight" id="weight" placeholder="enter your weight in kg"><br>
+
+            <label for="height">height: </label>
+            <input type="number" name="height" id="height" placeholder="enter your height in cm"><br>
+
+            <button>calculate</button>
+        </section>
+
+        <section>
+            <h2>Result</h2>
+            <div class="hidden">
+                <p>
+                    <span class="result"></span>
+                    <span>kgm<sup>-2</sup></span>
+                </p>
+
+                <p>
+                    status: 
+                    <span class="status"></span>
+                </p>
+                <p>
+                    recommendation: 
+                    <span class="recommend"></span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const btn = document.querySelector('button')
+        const weight = document.getElementById('weight')
+        const height = document.getElementById('height')
+        const result = document.getElementsByClassName('result')[0]
+        const status = document.getElementsByClassName('status')[0]
+        const recommend = document.getElementsByClassName('recommend')[0]
+        const hidden = document.getElementsByClassName('hidden')[0]
+
+        function bmi(){
+
+            const we = weight.value
+            const he = height.value
+
+            const finalResult = (we / Math.pow((he/100), 2)).toFixed(2)
+
+            let res
+            let rec
+
+            if(finalResult >= 30){
+                res = 'Obesity'
+                rec = 'see your doctor'
+            }
+            else if(finalResult >= 25){
+                res = 'Overweight'
+                rec = 'hit the gim'
+            }
+            else if(finalResult >= 18.5){
+                res = 'Healthy weight'
+                rec = 'keep it up'
+            }
+            else{
+                res = 'Underweight'
+                rec = 'Eat some carbs '
+            }
+
+            status.textContent = res
+
+            recommend.textContent = rec
+
+            result.textContent = finalResult
+
+            hidden.style.display = 'block'
+        }
+
+        btn.addEventListener('click', bmi)
+    </script>
+</body>
+</html>
